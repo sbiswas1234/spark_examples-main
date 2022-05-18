@@ -1,7 +1,6 @@
 DEPARTMENT_ID,DEPARTMENT_NAME,Location
 30,HR,Block A
 110,Admin,Block B
-100,Execution,Block C
 70,Tester,Block D
 90,Engineer,Block A
 60,IT support,Block C
