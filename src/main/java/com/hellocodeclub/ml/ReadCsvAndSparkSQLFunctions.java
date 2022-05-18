@@ -71,48 +71,9 @@ public class ReadCsvAndSparkSQLFunctions {
         // select distinct records for specific column
        df3.select("DEPARTMENT_ID").distinct().show(false);
 
-       // df3.dropDuplicates().show(false);
-
-        Dataset<Row> csvFileDF2 = spark.read().option("header", "true").csv("C:\\Users\\Subhankar\\Documents\\Dataset\\spark_examples-main\\src\\depatment.csv");
-
-        csvFileDF2.show();
+       df3.dropDuplicates().show(false);
 
 
-        //joining...DSL approach
-
-        //inner join
-        Dataset <Row> joined = df3.join(csvFileDF2, df3.col("DEPARTMENT_ID").equalTo(csvFileDF2.col("DEPARTMENT_ID")));
-
-        joined.show(false);
-
-        //leftouter join
-
-        df3.join(csvFileDF2, df3.col("DEPARTMENT_ID").equalTo(csvFileDF2.col("DEPARTMENT_ID")),"leftouter").show(false);
-
-        //rightouter join
-        df3.join(csvFileDF2, df3.col("DEPARTMENT_ID").equalTo(csvFileDF2.col("DEPARTMENT_ID")),"rightouter").show(false);
-
-        //fullouter join
-        df3.join(csvFileDF2, df3.col("DEPARTMENT_ID").equalTo(csvFileDF2.col("DEPARTMENT_ID")),"fullouter").show(false);
-
-        //leftsemi join
-        df3.join(csvFileDF2, df3.col("DEPARTMENT_ID").equalTo(csvFileDF2.col("DEPARTMENT_ID")),"leftsemi").show(false);
-
-        //leftanti join
-        df3.join(csvFileDF2, df3.col("DEPARTMENT_ID").equalTo(csvFileDF2.col("DEPARTMENT_ID")),"leftanti").show(false);
-
-        //self join
-        df3.as("emp1").join(df3.as("emp2"), df3.col("DEPARTMENT_ID").equalTo(df3.col("DEPARTMENT_ID")),"inner").show(false);
-
-        //SQL JOIN(sql approach)
-        df3.createOrReplaceTempView("EMP");
-        csvFileDF2.createOrReplaceTempView("DEPT");
-
-        Dataset<Row> joinDF = spark.sql("select * from EMP e, DEPT d where e.DEPARTMENT_ID == d.DEPARTMENT_ID");
-        joinDF.show(false);
-
-        Dataset<Row> joinDF2 = spark.sql("select * from EMP e INNER JOIN DEPT d ON e.DEPARTMENT_ID == d.DEPARTMENT_ID");
-        joinDF2.show(false);
 
     }
 }

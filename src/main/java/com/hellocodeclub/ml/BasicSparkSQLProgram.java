@@ -94,14 +94,14 @@ public class BasicSparkSQLProgram {
         df.withColumn("dense_rank_people",functions.dense_rank().over(ws))
                 .show();
 
-/*
+
        //lag
         df.withColumn("lag",functions.lag("salary",1).over(ws))
                 .show();
 
         //lead
         df.withColumn("lead",functions.lead("salary",1).over(ws))
-                .show();*/
+                .show();
 
     }
 }
