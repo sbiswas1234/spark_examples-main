@@ -3,18 +3,19 @@ package com.hellocodeclub.ml;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
+import org.apache.spark.sql.types.DataTypes;
 import org.apache.spark.sql.types.IntegerType;
 
-import static org.apache.spark.sql.functions.add_months;
-import static org.apache.spark.sql.functions.col;
-import static org.apache.spark.sql.functions.when;
+import static org.apache.spark.sql.functions.*;
+
+
 /**
  * Created by Subhankar on 13-05-2022.
  */
 public class ReadCsvAndSparkSQLFunctions {
     public static void main(String[] args) {
 
-
+      final String COLUMN_UPPERCASE_UDF_NAME = "columnUppercase";
         SparkSession spark = SparkSession
                 .builder()
                 .appName("ReadCsvAndSparkSQLFunctions")
@@ -55,7 +56,7 @@ public class ReadCsvAndSparkSQLFunctions {
         df3.printSchema();
 
        // groupBy and sum()
-        df3.groupBy("JOB_ID").avg("salary_to_Int").show(false);
+        df3.groupBy("JOB_ID").sum("salary_to_Int").show(false);
 
        //orderBy ascending and descending
         df3.sort(col("salary_to_Int").desc()).show(false);
@@ -72,6 +73,13 @@ public class ReadCsvAndSparkSQLFunctions {
        df3.select("DEPARTMENT_ID").distinct().show(false);
 
        df3.dropDuplicates().show(false);
+
+       df3.withColumn("Current_Date",current_date()).withColumn("Month Of the date",month(col("Current_Date"))).show();
+
+
+
+
+
 
 
 

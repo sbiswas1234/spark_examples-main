@@ -67,5 +67,7 @@ public class AllTypeSparkSQLJoins {
         Dataset<Row> joinDF2 = spark.sql("select * from EMP e INNER JOIN DEPT d ON e.DEPARTMENT_ID == d.DEPARTMENT_ID");
         joinDF2.show(false);
 
+        joinDF2.cache();
+
     }
 }
