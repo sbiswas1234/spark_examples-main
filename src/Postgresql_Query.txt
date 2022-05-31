@@ -1,0 +1,2 @@
+INSERT INTO employee_schema.EMPLOYEE_DB(ID,NAME,AGE,SALARY,phone_numbers,address) VALUES (1, 'Paul', 32, 20000.00,'{"03325895842","+918432987437"}','{ "Plot No": "cc-96", "Street Number":"233","Block":"CC","Pin":"700156"}','2020-09-12');
+INSERT INTO employee_schema.EMPLOYEE_DB(ID,NAME,AGE,SALARY,phone_numbers,address) VALUES (2, 'Raunac', 33, 29000.00,'{"03325895967","8434987462"}','{ "Plot No": "ca-48", "Street Number":"93","Block":"AB","Pin":"400066"}','2021-06-17');
